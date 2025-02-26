@@ -27,6 +27,16 @@ func (chain *BlockChain) AddBlock(data string){
 }
 
 // create first block 
+func Genesis() *Block {
+	return CreateBlock("Genesis",[]byte{})
+}
+
+
+func InitBlockChain() *BlockChain{
+
+	return &BlockChain{[]*Block{Genesis()}}
+
+}
 
 func (b *Block) DeriveHash() {
 
@@ -46,6 +56,11 @@ func CreateBlock(data string, prevHash []byte) *Block {
 
 func main() {
 
+	chain := InitBlockChain()
+
+	chain.AddBlock("First Block after Genesis")
+	chain.AddBlock("Second Block after Genesis")
+	chain.AddBlock("Third Block after Genesis")
 
 	
 
